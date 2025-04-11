@@ -2,21 +2,20 @@ import Styles from "./Card.module.css";
 import Typography from "../Typography";
 
 type CardProps = {
-  id: number;
-  label: string;
+  title: string;
   price: number;
-  imageSrc: string;
+  image: string;
 };
 
-const Card = ({ label, price, imageSrc, id }: CardProps) => {
+const Card = ({ title, price, image }: CardProps) => {
   return (
     <div className={Styles.card}>
       <div className={Styles.imageContainer}>
-        <img src={imageSrc} alt={label} className={Styles.cardImage} />
+        <img src={image} alt={title} className={Styles.cardImage} />
       </div>
       <div className={Styles.cardContent}>
         <div className={Styles.cardContentInner}>
-          <Typography variant="h6">{label}</Typography>
+          <Typography variant="h6">{title}</Typography>
           <Typography variantStyle="heading-semi-bold">
             {price.toFixed(2)}
           </Typography>

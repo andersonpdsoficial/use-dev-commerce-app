@@ -24,7 +24,7 @@ const useFetch = <T>(url: string): FetchResult<T> => {
         setData(response);
         setIsLoading(false);
       })
-      .catch((err) => {
+      .catch((error) => {
         setError("Erro ao carregar dados!");
         setIsLoading(false);
       });
