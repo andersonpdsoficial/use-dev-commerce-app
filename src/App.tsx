@@ -1,5 +1,5 @@
 import "./App.css";
-import Header from "./components/Header";
+import Header from "./components/Header/index";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import FooterConfig from "./components/Footer/FooterConfig";
 import HomePage from "./pages/HomePage";
@@ -8,12 +8,20 @@ import ScrollToTop from "./common/utils/ScrollToTop";
 import CartPage from "./pages/CartPage";
 import WithCart from "./common/utils/withCart";
 import { CartProps } from "./common/types/cart";
+import { useState } from "react";
 
 function App({ cartItems, cartCount, addToCart, removeFromCart }: CartProps) {
+  const [cartCountState, setCartCountState] = useState(cartCount);
+  
+  const handleSearch = (query: string) => {
+    // Implementar a lógica de busca aqui
+    console.log('Searching for:', query);
+  };
+
   return (
     <Router>
       <ScrollToTop />
-      <Header onSearch={() => {}} cartCount={cartCount} />
+      <Header cartCount={cartCountState} onSearch={handleSearch} />
       <Routes>
         <>
           <Route path="/" element={<HomePage />} />
@@ -25,7 +33,7 @@ function App({ cartItems, cartCount, addToCart, removeFromCart }: CartProps) {
             path="/carrinho"
             element={
               <CartPage
-                cartCount={cartCount}
+                cartCount={cartCountState}
                 cartItems={cartItems}
                 removeFromCart={removeFromCart}
               />
