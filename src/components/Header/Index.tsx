@@ -14,7 +14,7 @@ type HeaderProps = {
   onSearch: (query: string) => void;
 };
 
-const Header = ({ cartCount, onSearch }: HeaderProps) => {
+const Header: React.FC<HeaderProps> = ({ cartCount, onSearch }) => {
   const [query, setQuery] = useState<string>("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
