@@ -6,9 +6,10 @@ type CardProps = {
   title: string;
   price: number;
   image: string;
+  label?: string;
 };
 
-const Card = ({ id, title, price, image }: CardProps) => {
+const Card = ({ title, price, image, label }: CardProps) => {
   return (
     <div className={Styles.card}>
       <div className={Styles.imageContainer}>
@@ -16,7 +17,7 @@ const Card = ({ id, title, price, image }: CardProps) => {
       </div>
       <div className={Styles.cardContent}>
         <div className={Styles.cardContentInner}>
-          <Typography variant="h6">{title}</Typography>
+          <Typography variant="h6">{label || title}</Typography>
           <Typography variantStyle="heading-semi-bold">
             {price.toFixed(2)}
           </Typography>
